@@ -47,6 +47,9 @@ class Target(DaeObject):
 
         return node
 
+    def getchildren(self):
+        return []
+
     def save(self):
         self.xmlnode.clear()
         paramnode = ElementTree.Element(tag('param'))
@@ -79,6 +82,9 @@ class Equation(DaeObject):
         math = node.find(mathtag('math'))
         node = Equation(eqtype, target=target, math=math, xmlnode=node)
         return node
+
+    def getchildren(self):
+        return self.math
 
     def save(self, recurse=True):
         """
